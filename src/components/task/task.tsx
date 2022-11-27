@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { VscClose } from "react-icons/vsc";
 import { TaskContext } from "../../context/tasks.context";
 import { status, Task } from "../../models/task.model";
+import { changeStyles } from "../../utils/colors.utilities";
 import { enumToArray } from "../../utils/enumsToArray.utilities";
 
 interface Props {
@@ -12,23 +13,6 @@ export const TaskItem = ({ item }: Props) => {
   const { changeStatus, deleteTask } = useContext(TaskContext);
   const [value, setValue] = useState<number>(item.status);
   const Options: any[] = enumToArray(status);
-
-  const changeStyles = (value: status) => {
-    switch (value) {
-      case status.backlog:
-        return "task-backlog";
-      case status["in progress"]:
-        return "task-progress";
-      case status.testing:
-        return "task-testing";
-      case status.rejected:
-        return "task-rejected";
-      case status["ready for deploy"]:
-        return "task-ready";
-      case status.done:
-        return "task-done";
-    }
-  };
 
   return (
     <div className={"task " + changeStyles(item.status)}>
