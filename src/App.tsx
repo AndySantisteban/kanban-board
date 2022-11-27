@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <h1 className="title">KANBAN BOARD</h1>
+      <h1 className="title">Board Kanban</h1>
       <CreateForm />
       <div className="layout">
         {sections?.map((i: any) => {
